@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My mall Sample</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.1.css">
+</head>
+<body>
+
+    <div id = "qunit"></div>
+    <div id = "qunit-fixture"></div>
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/qunit/qunit-2.4.1.js"></script>
+    <script>
+
+        var nikeAncugUrl = "http://sports.mymall.bg/products/Nike-Academy-%252d-%D0%BC%D1%8A%D0%B6%D0%BA%D0%B8-%D0%B0%D0%BD%D1%86%D1%83%D0%B3-%28638100%252d63810040%29.html";
+        var londsdaleProduct = "http://sports.mymall.bg/products/Lonsdale-%252d-%D0%9F%D1%8A%D1%82%D0%B5%D0%BD-%D1%81%D0%B0%D0%BA--%28705013%252d70501348%29.html";
+        var waterBottle = "http://sports.mymall.bg/products/Character-%252d-%D0%94%D0%B5%D1%82%D1%81%D0%BA%D0%B0-%D0%B1%D1%83%D1%82%D0%B8%D0%BB%D0%BA%D0%B0-%D0%B7%D0%B0-%D0%B2%D0%BE%D0%B4%D0%B0--%28842002%252d84200293%29.html";
+
+
+        QUnit.test( "multiple call test()", function( assert ) {
+            var done = assert.async(3 );
+
+            setTimeout(function() {
+                //Nike Product Test
+                $.get( nikeAncugUrl,
+                    function( data ) {
+                        var productPage = $(data);
+                        var productPrice = productPage.find(".VariationProductPrice").find(".SalePrice").text();
+                        assert.equal( productPrice, "11699лв.", "Цената не е сменяна за Анцуг" );
+                        done();
+                    });
+
+            }, 500 );
+
+            setTimeout(function() {
+
+                //Londsdale product
+                $.get( londsdaleProduct,
+                    function( data ) {
+                        var productPage = $(data);
+                        var productName = productPage.find("h1").text();
+                        var productPrice = productPage.find(".VariationProductPrice").find(".SalePrice").text();
+                        assert.equal( productPrice, "2399лв.", "Цената не е сменяна за " + productName );
+                        done();
+                    });
+
+            }, 500 );
+
+            setTimeout(function() {
+                //Londsdale product
+                $.get( waterBottle,
+                    function( data ) {
+                        var productPage = $(data);
+                        var productName = productPage.find("h1").text();
+                        var productPrice = productPage.find(".VariationProductPrice").find(".SalePrice").text();
+                        assert.equal( productPrice, "699лв.", "Цената не е сменяна за " + productName );
+                        done();
+                    });
+            }, 500 );
+        });
+    </script>
+
+</body>
+</html>
