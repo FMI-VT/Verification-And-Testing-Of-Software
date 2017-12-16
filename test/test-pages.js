@@ -3,12 +3,14 @@ var request = require('request');
 
 var assert = require('assert');
 
+var calculator = require('../calculator');
 
+var ninja = 'yamakasi';
 
 describe('Array', function() {
   describe('#indexOf()', function() {
     it('should return -1 when the value is not present', function(){
-      assert.equal(-1, [1,2,3,4,5].indexOf(4));
+      assert.equal(-1, [1,2,3].indexOf(4));
     });
   });
 });
@@ -25,4 +27,24 @@ describe('Math', function() {
       // Our actual test: (3-4)*8 SHOULD EQUAL -8
       assert.equal(-8, (3-4)*8);
     });
+});
+
+//describing ninja test
+describe('Ninja', function() {
+	//what is the ninja name
+	it('ninja name should be yamakasi', function() {
+		assert.equal(ninja,'yamakasi');
+	});
+});
+
+//Calculator
+describe('Calculator', function() {
+	//what is the ninja name
+	it('Sum function is working properly', function() {
+		assert.equal(calculator.add(1,2),3);
+	});
+
+	it('Sqrt', function() {
+		assert.equal(calculator.sqrtOfItem(9),3);
+	});
 });
