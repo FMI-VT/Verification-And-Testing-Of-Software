@@ -47,4 +47,8 @@ describe('Calculator', function() {
 	it('Sqrt', function() {
 		assert.equal(calculator.sqrtOfItem(9),3);
 	});
+
+	it('Multiply function', function() {
+		assert.equal(calculator.multiplyItems(3,2),6);
+	});
 });

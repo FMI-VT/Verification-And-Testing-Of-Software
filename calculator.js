@@ -4,5 +4,8 @@ module.exports = {
     },
     sqrtOfItem: function(a) {
 	return Math.sqrt(a);
+    },
+    multiplyItems: function(a,b) {
+	return a * b;
     }
 };
